@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>شمارش حروف و کلمات</title>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "IRANSans";
+        src: url("https://cdn.fontcdn.ir/Font/Persian/Sans/IRANSansWeb.ttf")
+          format("truetype");
+      }
+      body {
+        font-family: "IRANSans", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-xl space-y-6">
+      <h1 class="text-xl font-bold text-blue-600 text-center">
+        <i class="fas fa-keyboard ml-2"></i>
+        شمارشگر حروف و کلمات
+      </h1>
+
+      <textarea
+        id="textInput"
+        rows="5"
+        placeholder="جمله‌ای وارد کنید..."
+        class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+      ></textarea>
+
+      <div class="flex justify-between text-sm text-gray-700">
+        <p>
+          <i class="fas fa-font ml-1 text-blue-500"></i> تعداد حروف:
+          <span id="charCount" class="font-bold">0</span>
+        </p>
+        <p>
+          <i class="fas fa-align-left ml-1 text-green-500"></i> تعداد کلمات:
+          <span id="wordCount" class="font-bold">0</span>
+        </p>
+      </div>
+
+      <p class="text-xs text-gray-500 text-right leading-6"></p>
+    </div>
+
+    <script>
+      const textInput = document.getElementById("textInput");
+      const charCount = document.getElementById("charCount");
+      const wordCount = document.getElementById("wordCount");
+
+      textInput.addEventListener("input", () => {
+        const text = textInput.value.trim();
+
+        const chars = text.replace(/\s/g, "");
+        charCount.textContent = chars.length;
+
+        const words = text.length > 0 ? text.split(/\s+/).filter(Boolean) : [];
+        wordCount.textContent = words.length;
+      });
+      console.log("Create By: Amirjahangiri");
+    </script>
+  </body>
+</html>
